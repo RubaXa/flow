@@ -24,6 +24,8 @@ res := flow.Defer(3, func (ret flow.Stream) {
 fmt.Println("Result:", <-res)
 ```
 
+---
+
 #### flow.Defer(task)
 Частный случая `flow.DeferMany`
 
@@ -35,8 +37,9 @@ res := flow.Defer(func (ret flow.Stream) {
 fmt.Println("Result:", <-res)
 ```
 
+---
 
-#### flow.CreateWorkerPool(size, worker)
+#### flow.CreateWorkerPool(size, worker) *sync.WaitGroup
 Создать пул воркеров
 
  - `size int` — количество воркеров
@@ -47,14 +50,17 @@ func main() {
     input := getInputChan();
 
     // Читаем канал в 15 потоков
-    flow.CreateWorkerPool(15, func () {
+    wg := flow.CreateWorkerPool(15, func () {
         for raw := range input {
             // Чтение канала
         }
     })
+
+    wg.Wait()
 }
 ```
 
+---
 
 #### flow.Go(queue ...) error
 Последовательно выполнение тасков до первой ошибки
