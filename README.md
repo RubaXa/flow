@@ -27,7 +27,7 @@ fmt.Println("Result:", <-res)
 ---
 
 #### flow.Defer(task)
-Частный случая `flow.DeferMany`
+Частный случай `flow.DeferMany`
 
 ```go
 res := flow.Defer(func (ret flow.Stream) {
