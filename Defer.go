@@ -7,5 +7,6 @@ func Defer(fn func(Stream)) Stream {
 func DeferMany(size int, fn func(Stream)) Stream {
 	ret := make(Stream, size)
 	go fn(ret)
+	close(ret)
 	return ret
 }
