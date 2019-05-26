@@ -85,5 +85,5 @@ func main() {
 
   - `IntChan chan int`
   - `StrChan chan string`
-  - `Stream chan interface{}``
+  - `Stream chan interface{}`
 
